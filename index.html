@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rinosoro Alto Volume - Lavagem Nasal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #FF5722;
+      --primary-dark: #E64A19;
+      --secondary: #1565C0;
+      --secondary-dark: #0D47A1;
+      --bg-gradient-start: #E3F2FD;
+      --bg-gradient-end: #BBDEFB;
+      --card-bg: #FFFFFF;
+      --text-primary: #1A237E;
+      --text-secondary: #5C6BC0;
+      --shadow: rgba(21, 101, 192, 0.15);
+      --shadow-hover: rgba(255, 87, 34, 0.25);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(255, 87, 34, 0.1) 0%, transparent 70%);
+      top: -100px;
+      right: -100px;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    body::after {
+      content: '';
+      position: absolute;
+      width: 350px;
+      height: 350px;
+      background: radial-gradient(circle, rgba(21, 101, 192, 0.1) 0%, transparent 70%);
+      bottom: -80px;
+      left: -80px;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 480px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 24px;
+      padding: 32px 24px;
+      box-shadow: 0 20px 60px var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 6px;
+      background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 32px;
+      position: relative;
+    }
+
+    .logo-area {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      border-radius: 20px;
+      margin-bottom: 16px;
+      box-shadow: 0 8px 24px rgba(255, 87, 34, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .logo-area::before {
+      content: '💧';
+      font-size: 42px;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-8px); }
+    }
+
+    h1 {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+      line-height: 1.2;
+    }
+
+    .brand {
+      color: var(--primary);
+    }
+
+    .subtitle {
+      font-size: 15px;
+      color: var(--text-secondary);
+      font-weight: 400;
+      margin-bottom: 8px;
+    }
+
+    .description {
+      display: inline-block;
+      font-size: 13px;
+      color: var(--secondary);
+      background: rgba(21, 101, 192, 0.08);
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-weight: 500;
+    }
+
+    .links {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+
+    .video-link {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 12px;
+      background: linear-gradient(135deg, #FFFFFF 0%, #F5F7FA 100%);
+      border: 2px solid transparent;
+      border-radius: 16px;
+      text-decoration: none;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .video-link:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px var(--shadow-hover);
+      border-color: var(--primary);
+    }
+    
+    /* ESTILO DA PRÉVIA DO VÍDEO */
+    .video-preview {
+      flex-shrink: 0;
+      width: 56px; /* Largura da prévia */
+      height: 90px; /* Altura da prévia */
+      border-radius: 10px;
+      overflow: hidden;
+      background-color: #e0e0e0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .video-preview video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* Garante que o vídeo cubra a área sem distorcer */
+    }
+    /* FIM DO ESTILO DA PRÉVIA */
+
+    .video-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .video-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .video-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      background: var(--primary);
+      color: white;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .video-platform {
+      font-size: 13px;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .instagram-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: linear-gradient(45deg, #F58529, #DD2A7B, #8134AF, #515BD4);
+      color: white;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .video-arrow {
+      flex-shrink: 0;
+      width: 32px;
+      height: 32px;
+      background: rgba(255, 87, 34, 0.1);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      font-size: 16px;
+      font-weight: 700;
+      transition: all 0.3s;
+    }
+
+    .video-link:hover .video-arrow {
+      background: var(--primary);
+      color: white;
+      transform: translateX(4px);
+    }
+    
+    footer {
+      text-align: center;
+      padding-top: 20px;
+      border-top: 2px solid rgba(21, 101, 192, 0.1);
+    }
+
+    .footer-text {
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin-bottom: 8px;
+    }
+
+    @media (max-width: 480px) {
+      .card {
+        padding: 24px 18px;
+      }
+      h1 {
+        font-size: 24px;
+      }
+      .video-title {
+        font-size: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <div class="header">
+        <div class="logo-area"></div>
+        <h1><span class="brand">Rinosoro</span> Alto Volume</h1>
+        <p class="subtitle">Lavagem Nasal Eficaz</p>
+        <span class="description">Assista aos vídeos informativos</span>
+      </div>
+
+      <div class="links" id="linksContainer"></div>
+
+      <footer>
+        <p class="footer-text">Clique nos vídeos para assistir no Instagram</p>
+        <p class="footer-brand">Rinosoro® | Cuidado Respiratório</p>
+      </footer>
+    </div>
+  </div>
+
+  <script>
+    const links = [
+      { 
+        title: "Tutorial Completo", 
+        subtitle: "Como usar corretamente", 
+        url: "https://www.instagram.com/reel/C-S2bGHOSvA/?igsh=MW5zcDNiczZrbGV6Yg==",
+        number: "1",
+        preview: "video1.mp4" // <-- COLOQUE O NOME DO SEU VÍDEO AQUI
+      },
+      { 
+        title: "Benefícios e Indicações", 
+        subtitle: "Quando usar Rinosoro", 
+        url: "https://www.instagram.com/reel/DN5gHf1EpSg/?igsh=Z3R3azJpMmUzejcy",
+        number: "2",
+        preview: "video2.mp4" // <-- COLOQUE O NOME DO SEU VÍDEO AQUI
+      },
+      { 
+        title: "Depoimentos Reais", 
+        subtitle: "Experiências de usuários", 
+        url: "https://www.instagram.com/share/BARN3AwSxE",
+        number: "3",
+        preview: "video3.mp4" // <-- COLOQUE O NOME DO SEU VÍDEO AQUI
+      }
+    ];
+
+    const container = document.getElementById('linksContainer');
+    
+    links.forEach((link) => {
+      const a = document.createElement('a');
+      a.className = 'video-link';
+      a.href = link.url;
+      a.target = '_blank';
+      a.rel = 'noopener noreferrer';
+      
+      a.innerHTML = `
+        <div class="video-preview">
+          <video src="${escapeHtml(link.preview)}" autoplay loop muted playsinline></video>
+        </div>
+        <div class="video-content">
+          <div class="video-title">
+            <span class="video-number">${escapeHtml(link.number)}</span>
+            ${escapeHtml(link.title)}
+          </div>
+          <div class="video-platform">
+            <span class="instagram-badge">📷 Instagram</span>
+            ${escapeHtml(link.subtitle)}
+          </div>
+        </div>
+        <div class="video-arrow">→</div>
+      `;
+      
+      container.appendChild(a);
+    });
+
+    function escapeHtml(str) {
+      return String(str)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+  </script>
+</body>
+</html>
+
+
+
+
